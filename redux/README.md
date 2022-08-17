@@ -35,6 +35,12 @@ axios.post("/api/login", data)
 
 **The Redux Toolkit `configureStore` function automatically sets up the thunk middleware by default**
 
-1. `import { createAsyncThunk } from '@reduxjs/toolkit';` in [user.js](./user.js)
+To do services in external files instead of doing everything in slice file:
 
-to be continued
+1. Create a [service file](services.js) and add your API services
+2. Create a [async thunk file](./asyncThunk.js) to handle all your redux thunk requests
+3. `import { createAsyncThunk } from "@reduxjs/toolkit";` and all your services
+4. In your [slice file](./data.js), import the async thunk functions created previously
+5. check **extraReducers**
+
+\*TBC abort thunk process

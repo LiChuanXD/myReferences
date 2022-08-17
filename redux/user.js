@@ -1,5 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	isAuthenticated: false,
@@ -23,9 +22,7 @@ const userSlice = createSlice({
 			user: null,
 			token: null
 		})
-	},
-	// thunk example below
-	extraReducers: builder => {}
+	}
 });
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -39,14 +36,3 @@ export const { loginUser, logoutUser } = userSlice.actions;
 
 // export the reducer to be used, userSlice.reducer
 export default userSlice.reducer;
-
-// THUNK EXAMPLE BELOW
-// createAsyncThunk("action string", PROMISE)
-export const loginFn = createAsyncThunk("user/LOGIN_USER", async data => {
-	try {
-		const response = await axios.post("/api/loginUser", data);
-		return response.data;
-	} catch (error) {
-		return error.response.data.error;
-	}
-});
